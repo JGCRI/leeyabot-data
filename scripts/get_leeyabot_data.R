@@ -1,6 +1,7 @@
 # Script to import data from the hector-run-archive and format the subset of data
 # to be used by leeyabot to generate reports. 
-# For now this is set to version 3.2.0
+# For now this is set to version 3.5.0
+
 
 # Imports and constants
 library(hector)
@@ -13,14 +14,13 @@ OUTPUT_FILE <- here::here("output", "leeyabot-data.csv")
 
 # Import data from zenodo
 # This may not work on the PNNL wifi/VPN
-base_url <- "https://zenodo.org/records/13285854"
-url <- paste0(base_url, "/files/output-V3.2.0.csv?download=1?raw=TRUE")
+url <- "https://zenodo.org/records/17428504/files/output-V3.5.0.csv?download=1"
 data <- read.csv(url)
 
 # Getting runs and variables of interest and switching to long form data
 data %>%
   subset(scenario %in% SCENARIOS & variable %in% VARIABLES) %>%
-  pivot_longer(!(c(version, commit, scenario, variable, units)), 
+  pivot_longer(!(c(version, scenario, variable, units)), 
                names_to = "year") -> long_data
 
 # Cleaning up data frame
