@@ -1,6 +1,6 @@
 # Script to import data from the hector-run-archive and format the subset of data
 # to be used by leeyabot to generate reports. 
-# For now this is set to version 3.5.0
+# For now this is set to version 3.5.5
 
 
 # Imports and constants
@@ -14,7 +14,7 @@ OUTPUT_FILE <- here::here("output", "leeyabot-data.csv")
 
 # Import data from zenodo
 # This may not work on the PNNL wifi/VPN
-url <- "https://zenodo.org/records/17428504/files/output-V3.5.0.csv?download=1"
+url <- "https://zenodo.org/records/22680280/files/output-V3.5.5.csv?download=1"
 data <- read.csv(url)
 
 # Getting runs and variables of interest and switching to long form data
